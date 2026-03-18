@@ -4,7 +4,6 @@ import helmet from 'helmet';
 import cors from "cors"
 import hpp from "hpp"
 import compression from "compression"
-import session from "express-session"
 import { env } from "./config/env.js"
 import morgan from "morgan"
 import passport from "./modules/auth/strategies/passport.strategy.js"
