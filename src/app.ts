@@ -15,6 +15,13 @@ import { swaggerUi, specs } from "./docs/swagger.js"
 const app = express()
 
 
+
+
+// ── Body Parsing ──────────────────────────────────────
+app.use(express.json({ limit: "10kb" })); // Prevent large payload attacks
+app.use(express.urlencoded({ extended: true, limit: "10kb" }));
+
+
 // ── Security ─────────────────────────────────────────────────────
 app.use(helmet())
 app.use((req, res, next) => {
@@ -44,9 +51,6 @@ app.use(
     })
 )
 
-// ── Body Parsing ──────────────────────────────────────
-app.use(express.json({ limit: "10kb" })); // Prevent large payload attacks
-app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 
 // ── Compression ───────────────────────────────────────
 app.use(compression());
